@@ -1162,7 +1162,18 @@ img {
 }
 
 .paper__container {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  margin-top: 20px; /* 或其他希望的外边距 */
+}
+
+.paper {
+  width: 80%; /* 或您希望的宽度 */
+  margin-bottom: 15px; /* 论文之间的间距 */
+  padding: 10px; /* 论文内部的填充 */
+  text-align: left; /* 文本对齐方式 */
 }
 
 .paper_type {
@@ -1171,15 +1182,20 @@ img {
 }
 
 .paper__head {
-  text-align: justify;
-  margin-left: 350px;
+  text-align: center;
+  font-style:normal;
 }
 
 .authors {
-  text-align:justify;
-  margin-left: 350px;
+  text-align: center;
+  font-style: italic;
 }
 .comming_soon {
   text-align: center;
 }
 
+@media screen and (max-width: 600px) {
+  .paper {
+    width: 95%; /* 在较窄的屏幕上占窗口宽度的95% */
+  }
+}
