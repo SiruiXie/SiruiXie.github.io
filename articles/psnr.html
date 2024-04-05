@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./psnr.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$', '$']]},
+            messageStyle: "none"
+        });
+    </script>
+
+    <title>PSNR - Sirui's Blogs</title>
+</head>
+<body>
+
+    <nav class="nav__bar">
+        <a href="../blogs.html" class="header">Sirui's Blog</a>
+        <a href="../index.html" class="about">About</a>
+    </nav>
+    
+    <div class="main">
+        <h1 class="label">峰值信噪比 - PSNR相关介绍</h1>
+        <div class="date">Feb. 2, 2024</div>
+
+        <p>
+            PSNR，峰值信噪比，原本是指一个信号最大可能功率和影响它的表示精度的破坏性噪声功率的比值。而在我们常见的计算机视觉、图形学任务中，PSNR可以非常直接
+            地描述图片的生成质量。
+        </p>
+        <h2 class="second-label">定义</h2>
+        <p>
+            原始图片和处理后的图片的峰值信噪比可以非常直接、清晰地用公式表达出来：<br>
+            <div class="equation-label-pair">
+                <div class="equation">
+                    $$\text{PSNR} = 10 \cdot log_{10} \left( \frac{\text{MAX}_I^2}{\text{MSE}} \right) = 20 \cdot \log_{10}\left( \frac{\text{MAX}_I}{\text{MSE}} \right)$$
+                </div>
+                <div class="equation-label">(1)</div>
+            </div>
+            其中，$\text{MAX}_I$ 代表像素点颜色的最大值；MSE指均方误差，见以下公式。在我们日常的使用中，如果图片的数据类型采用8位表示，即使用 'np.uint8' 的话，则 $\text{MAX}_I = 255$
+            <div class="equation-label-pair">
+                <div class="equation">
+                    $$\text{MSE} = \frac{1}{mn} \sum^{m-1}_{i=0} \sum^{n-1}_{j=0} [I(i, j)] - K(i, j)]^2 $$
+                </div>
+                <div class="equation-label">(2)</div>
+            </div>
+            其中，m和n分别表示图像的长和宽<br>
+            然而对于一张rgb图片而言，我们需要考虑的不仅有一张图片的长和宽，还需要考虑图像的3个通道，所以这个公式将进一步演化为：
+            <div class="equation-label-pair">
+                <div class="equation">
+                    $$\text{PSNR} = 10 log_{10} \left( \frac{\text{MAX}_{I}^2}{\frac{1}{3mn} \sum_{R,G,B} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} [I_{color}(i, j) - K_{color}(i,j)]^2 } \right) $$
+                </div>
+                <div class="equation-label">
+                    (3)
+                </div>
+            </div>
+        </p>
+
+        <p>
+            PNSR的值在一定程度上可以直接衡量一张图像的质量。<br>
+            <ul type="disc">
+                <li> 当 $\text{PSNR} \rightarrow 50$的时候，认为压缩后的图像(即生成或合成图像)的质量与原始图像之间仅有微小差异。
+                <li> 当 $\text{PSNR} \geq 30$的时候，认为压缩后的图像与真实图像之间区别不大，肉眼几乎无法察觉。
+                <li> 当 $20 \leq \text{PSNR} \leq 30$ 时，人眼就可以很轻松地识别出合成图像与真实图像之间的差异。
+                <li> 当 $10 \leq \text{PSNR} \leq 20$ 介于10到20之间时，人眼能辨别两张图像的结构相同，且主观上会认为两张图片表示的是同一个视角下的同一个场景。
+                <li> 当 $\text{PSNR} \leq 10 $的时候，人眼完全无法识别两张图片具有相似性，是否是一对真实图片和合成图片对(pair)。 
+            </ul>
+            
+        </p>
+
+        <h2 class="second-label">代码实现</h2>
+        <h3 class="third-label">numpy代码实现</h3>
+        <pre class="code">
+import numpy as np
+import math
+
+def psnr(img1, img2):
+    """img1: 生成图像
+       img2: 真实图像
+    """
+    assert img1.shape == img2.shape, "Shape of img1 and img2 must be identical!"
+    mse = np.mean((img1 - img2) ** 2)
+    max_value = np.max(img2)
+    psnr = 20 * math.log10(max_value / math.sqrt(mse))
+    return psnr
+        </pre>
+        <h3 class="third-label">pytorch代码实现</h3>
+        <pre class="code">
+import torch
+
+def psnr(img1: torch.Tensor, img2: torch.Tensor) -> torch.Tensor:
+    mse = (((img1 - img2)) ** 2).view(img1.shape[0], -1).mean(1, keepdim=True)
+    return 20 * torch.log10(1.0 / torch.sqrt(mse))
+        </pre>
+
+
+    </div>
+    
+
+</body>
+</html>
