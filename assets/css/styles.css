@@ -422,7 +422,7 @@ img {
   width: 200px;
   border-radius: .5rem;
   justify-self: center;
-  align-self: center;
+  align-self: start;
 
 }
 
@@ -826,6 +826,15 @@ img {
   vertical-align: -0.15em;
   /* fill:white; */
   overflow: hidden;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  background-color: currentColor;
+  -webkit-mask: url("https://simpleicons.org/icons/zhihu.svg") no-repeat center / contain;
+  mask: url("https://simpleicons.org/icons/zhihu.svg") no-repeat center / contain;
 }
 
 /*========== SCROLL UP ==========*/
