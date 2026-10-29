@@ -1,773 +1,235 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <!--==================== UNICONS 图标====================-->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
-    />
-    <!--==================== SWIPER CSS ====================-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-
-    <!--==================== CSS ====================-->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <!-- iconfont font class 方式引用图标 -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://at.alicdn.com/t/c/font_3900458_82z46p85im.css"
-    /> -->
-
-    <title>Sirui's Home Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Sirui Xie (谢斯睿) — MRes student in Bioengineering at Imperial College London. Research in active tactile perception, robot manipulation, and motion planning." />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Sirui Xie | Robotics &amp; Tactile Perception</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
-  <body>
-    <!--==================== HEADER ====================-->
-    <header class="header scroll-header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">Sirui Xie</a>
+  <body id="top">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.1c-3.23.71-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.03 1.78 2.71 1.27 3.37.97.11-.75.4-1.27.73-1.56-2.57-.29-5.27-1.28-5.27-5.69 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.12-3.13 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.83 0c2.22-1.49 3.2-1.18 3.2-1.18.64 1.63.24 2.83.12 3.13.75.81 1.2 1.84 1.2 3.1 0 4.42-2.71 5.39-5.29 5.68.41.35.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5Z" />
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.3l8 5.2 8-5.2V7H4Zm16 10V9l-7.4 4.82a1 1 0 0 1-1.2 0L4 9v8h16Z" />
+      </symbol>
+      <symbol id="icon-scholar" viewBox="0 0 24 24">
+        <path d="M12 3 1 8l11 5 9-4.09V16h2V8L12 3Zm-6.5 7.28V15c0 2.48 2.91 4.5 6.5 4.5s6.5-2.02 6.5-4.5v-4.72l-6.5 2.95-6.5-2.95Z" />
+      </symbol>
+      <symbol id="icon-pdf" viewBox="0 0 24 24">
+        <path d="M6 2h8l5 5v15H6V2Zm8 1.5V8h4.5L14 3.5ZM8 12h2.2c1.37 0 2.3.81 2.3 2.03 0 1.24-.92 2.08-2.3 2.08H9.42V18H8v-6Zm1.42 1.14v1.79h.8c.71 0 1.17-.35 1.17-.9 0-.54-.46-.89-1.17-.89h-.8ZM14 12h3.8v1.12h-2.38v1.3h2.2v1.1h-2.2V18H14v-6Z" />
+      </symbol>
+      <symbol id="icon-code" viewBox="0 0 24 24">
+        <path d="m9.4 16.6-4.2-4.2L9.4 8.2 8 6.8 2.4 12.4 8 18l1.4-1.4Zm5.2 0 1.4 1.4 5.6-5.6L15.4 6.8 14 8.2l4.2 4.2-4.2 4.2ZM13 5h-2l-3 14h2l3-14Z" />
+      </symbol>
+      <symbol id="icon-web" viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.8 9h-3.17a15.4 15.4 0 0 0-1-5.15A8.02 8.02 0 0 1 19.8 11ZM12 4.1c.7.86 1.56 2.77 1.93 6.9h-3.86c.37-4.13 1.23-6.04 1.93-6.9ZM4.2 13h3.17a15.4 15.4 0 0 0 1 5.15A8.02 8.02 0 0 1 4.2 13Zm3.17-2H4.2a8.02 8.02 0 0 1 4.17-5.15A15.4 15.4 0 0 0 7.37 11Zm1.95 0c.27-3.15.95-4.94 1.36-5.84.41.9 1.09 2.69 1.36 5.84H9.32Zm0 2h2.72c-.27 3.15-.95 4.94-1.36 5.84-.41-.9-1.09-2.69-1.36-5.84Zm4.68 0h3.17a8.02 8.02 0 0 1-4.17 5.15A15.4 15.4 0 0 0 14 13Z" />
+      </symbol>
+    </svg>
 
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list grid">
-            <li class="nav__item">
-              <a href="#home" class="nav__link">
-                <i class="uil uil-estate nav__icon"></i>
-                <p i18n="home">Home</p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">
-                <i class="uil uil-user nav__icon"></i>
-                <p i18n="about">About</p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>
-                <p i18n="skills">Skills</p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#qualification" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>
-                <p i18n="qualification">Qualification</p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#publications" class="nav__link">
-                <i class="uil uil-scenery nav__icon"></i>
-                <p i18n="portfolio">Publications</p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">
-                <i class="uil uil-message nav__icon"></i>
-                <p i18n="contact">Contactme</p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <div class="nav__link" id="translate" value="en">
-                <a class="=nav__link" id="nav__translate">Translate</a>
-              </div>
-            </li>
-            
-          </ul>
-          <i class="uil uil-times nav__close" id="nav-close"></i>
-        </div>
-
-        <div class="nav__btns">
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="uil uil-apps"></i>
+    <div class="page-shell">
+      <div class="layout">
+        <aside class="profile-panel" aria-label="Profile">
+          <img class="avatar" src="assets/images/sirui-xie.webp" width="800" height="800" alt="Portrait of Sirui Xie" fetchpriority="high" />
+          <div class="profile-heading">
+            <h1>Sirui Xie <span class="chinese-name" lang="zh-CN">谢斯睿</span></h1>
+            <p class="identity-line">MRes in Bioengineering</p>
+            <p class="identity-line institution">Imperial College London</p>
+            <p class="identity-line location">London, United Kingdom</p>
           </div>
-        </div>
-      </nav>
-    </header>
-
-    <!--==================== MAIN ====================-->
-    <main class="main">
-      <!--==================== HOME ====================-->
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <div class="home__content grid">
-            <div class="home__social">
-              <a
-                href="https://www.linkedin.com/in/SiruiXie"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-linkedin-alt"></i>
+          <div class="profile-contact">
+            <a class="email-link" href="mailto:s.xie26@imperial.ac.uk">s.xie26@imperial.ac.uk</a>
+            <div class="social-links" aria-label="Profile links">
+              <a href="https://github.com/SiruiXie" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub">
+                <svg aria-hidden="true"><use href="#icon-github"></use></svg>
               </a>
-              <a
-                href="http://github.com"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-github-alt"></i>
+              <a href="mailto:s.xie26@imperial.ac.uk" aria-label="Email Sirui" title="Email">
+                <svg aria-hidden="true"><use href="#icon-mail"></use></svg>
               </a>
-              <a
-                href="https://www.zhihu.com/people/sirius-44-23-40"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <span class="social-icon social-icon--zhihu" aria-hidden="true"></span>
-              </a>
-            </div>
-
-            <div class="home__img">
-              <svg
-                class="home__blob"
-                viewBox="0 0 200 187"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-              >
-                <mask id="mask0" mask-type="alpha">
-                  <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                                130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                                97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                                0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                  />
-                </mask>
-                <g mask="url(#mask0)">
-                  <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                                165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                                129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                                -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                  />
-                  <image
-                    class="home__blob-img"
-                    x="0"
-                    y="-30"
-                    xlink:href="assets/img/cat.png"
-                  />
-                </g>
-              </svg>
-            </div>
-
-            <div class="home__data">
-              <h1 class="home__title" i18n="home__title">
-                Hi, I'm Sirui
-              </h1>
-              <h3 class="home__subtitle" i18n="home__subtitle">
-                In Search for Unified Intelligence in Robotics
-              </h3>
-              <p class="home__description" i18n="home__description">
-                I learn and grow quickly in Embodied Intelligence.<br>
-                <b>I am applying for a research based postgrad program starting in 26fall.</b>
-              </p>
-              <a href="#contact" class="button button-flex">
-                <span i18n="home__contact">Contact Me</span>
-                <i class="uil uil-message button__icon"></i>
+              <a class="cv-link" href="CV___Sirui_Xie.pdf" target="_blank" rel="noopener noreferrer" title="Read my CV (PDF)">
+                <svg aria-hidden="true"><use href="#icon-pdf"></use></svg><span>CV</span>
               </a>
             </div>
           </div>
-          <div class="home__scroll">
-            <a href="#about" class="home__scroll-button button--flex">
-              <i class="uil uil-mouse-alt-2 home__scroll-mouse"></i>
-              <span class="home__scroll-name" i18n="home__scroll-name"
-                >Scroll down</span
-              >
-              <i class="uil uil-arrow-down home__scroll-arrow"></i>
-            </a>
-          </div>
-        </div>
-      </section>
+          <nav class="section-nav" aria-label="Sections">
+            <a href="#about">About <span aria-hidden="true">↗</span></a>
+            <a href="#publications">Publications <span aria-hidden="true">↗</span></a>
+            <a href="#experience">Experience <span aria-hidden="true">↗</span></a>
+            <a href="#more">More about me <span aria-hidden="true">↗</span></a>
+          </nav>
+          <p class="profile-note">Learning to see, feel,<br />and act in the physical world.</p>
+        </aside>
 
-      <!--==================== ABOUT ====================-->
-      <section class="about section" id="about">
-        <h2 class="section__title" i18n="about__title">About Me</h2>
-        <span class="section__subtitle" i18n="about__subtitle"
-          >My introduction</span
-        >
-        <div class="about__container container grid">
-          <img src="assets/img/about.png" alt="" class="about__img" />
-
-          <div class="about__data">
-            <p class="about__description" i18n="about__description">
-              <b>BArch.</b> Urban Design @ Beijing University of Civil Engineering and Architecture<br>
-              <b>Research Intern</b> Institute for AI Industry Research(AIR) @ Tsinghua University<br>
-              <b>Research Intern</b> CoRe Lab @ Peking University<br>
-              My research interest mainly falls on Robotics, especially tactile informed dexterous manipulation  <br>
-            </p>
-
-            <div class="about__info">
-              <div>
-                <span class="about__info-title">3</span>
-                <span class="about__info-name" i18n="about__info-name1"
-                  >Years of <br />
-                  experience</span
-                >
-              </div>
-
-              <div>
-                <span class="about__info-title">3</span>
-                <span class="about__info-name" i18n="about__info-name2"
-                  >Completed <br />
-                  projects</span
-                >
-              </div>
-
-              <!--
-              <div>
-                <span class="about__info-title">00+</span>
-                <span class="about__info-name" i18n="about__info-name3"
-                  >Companies <br />
-                  worked</span
-                >
-              </div>
-            -->
+        <main class="content-panel" id="main-content">
+          <section class="bio-block" id="about" aria-labelledby="bio-title">
+            <p class="eyebrow">Robotics · Perception · Learning</p>
+            <h2 id="bio-title">Biography</h2>
+            <p>I’m Sirui (<span lang="zh-CN">谢斯睿</span>), an MRes student in Bioengineering at
+              <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener noreferrer">Imperial College London</a>,
+              working with <a href="https://profiles.imperial.ac.uk/d.zhang17" target="_blank" rel="noopener noreferrer">Dr. Dandan Zhang</a>
+              in the <a href="https://www.intelligentrobotics-acrossscales.com/" target="_blank" rel="noopener noreferrer">MSEI Lab</a>.
+              My current research explores <strong>active tactile perception of robot–object systems</strong>,
+              with broader interests in tactile perception and control, motion planning, and reinforcement learning for robotics.</p>
+            <p>I received my BArch in Urban Design from Beijing University of Civil Engineering and Architecture in 2026.
+              Previously, I was a research intern at Peking University’s CoRe Lab, advised by
+              <a href="https://yzhu.io/" target="_blank" rel="noopener noreferrer">Dr. Yixin Zhu</a>,
+              and at AIR, Tsinghua University &amp; Lightwheel AI, advised by
+              <a href="https://sites.google.com/view/fromandto" target="_blank" rel="noopener noreferrer">Dr. Hao Zhao</a>.
+              My work has spanned robot manipulation, motion planning, and neural scene representations.</p>
+            <div class="split-grid">
+              <article class="info-card" aria-labelledby="research-title">
+                <h3 id="research-title">Research interests</h3>
+                <ul class="interest-list">
+                  <li>Tactile perception &amp; control</li>
+                  <li>Robot manipulation</li>
+                  <li>Motion planning</li>
+                  <li>Reinforcement learning for robotics</li>
+                </ul>
+              </article>
+              <article class="info-card" aria-labelledby="education-title">
+                <h3 id="education-title">Education</h3>
+                <div class="education-list">
+                  <div>
+                    <span class="year">Oct 2026 — Present</span>
+                    <p><strong>Imperial College London</strong><br />MRes in Bioengineering</p>
+                  </div>
+                  <div>
+                    <span class="year">Sep 2021 — Jun 2026</span>
+                    <p><strong>Beijing University of Civil Engineering and Architecture</strong><br />BArch in Urban Design</p>
+                    <p class="small-note">GPA: 88.69 / 100<br />Previously studied Vehicle Engineering, 2021–2022.</p>
+                  </div>
+                </div>
+              </article>
             </div>
+          </section>
 
-            <div class="about__buttons">
-              <a
-                download=""
-                href="assets/pdf/简历.pdf"
-                class="button button--flex"
-              >
-                <span i18n="download">Download CV</span
-                ><i class="uil uil-download-alt button__icon"></i>
-              </a>
+          <section class="publication-block" id="publications" aria-labelledby="pub-title">
+            <div class="section-heading">
+              <h2 id="pub-title">Publications</h2>
+              <span class="section-note">* Equal contribution</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!--==================== SKILLS ====================-->
-      <section class="skills section" id="skills">
-        <h2 class="section__title" i18n="skills__title">Skills</h2>
-        <span class="section__subtitle" i18n="skills__subtitle"
-          >My technical level</span
-        >
-
-        <div class="skills__container container grid">
-          <div>
-            <!--==================== SKILLS 1 ====================-->
-            <div class="skills__content skills__open">
-              <div class="skills__header">
-                <i class="uil uil-brackets-curly skills__icon"></i>
-
-                <div>
-                  <h1 class="skills__title" i18n="home__subtitle">
-                    AI Development
-                  </h1>
-                  <!--
-                  <span class="skills__subtitle" i18n="skills__years"
-                    >More than * years</span
-                  >
-                  -->
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Python</h3>
-                    <span class="skills__number">80%</span>
-                  </div>
-                  <div class="skills__bar">
-                    <div class="skills__percentage skills__python"></div>
+            <div class="publication-list">
+              <article class="publication-item">
+                <a class="publication-thumb" href="assets/images/vi-tacman-teaser.webp" data-figure data-caption="Vi-TacMan: vision-guided initialization and tactile-informed articulated object manipulation. Figure from the project page (CC BY-SA 4.0); thumbnail cropped." data-source="https://vi-tacman.github.io/" aria-label="Enlarge the Vi-TacMan figure">
+                  <img src="assets/images/vi-tacman-thumb.webp" width="850" height="550" alt="A robot gripper establishes tactile contact with a microwave handle" loading="lazy" />
+                  <span class="image-hint" aria-hidden="true">View figure ↗</span>
+                </a>
+                <div class="publication-body">
+                  <p class="publication-venue">ICRA <span>2026</span></p>
+                  <h3><a href="https://vi-tacman.github.io/" target="_blank" rel="noopener noreferrer">Vi-TacMan: Articulated Object Manipulation via Vision and Touch</a></h3>
+                  <p class="publication-authors">Leiyao Cui*, Zihang Zhao*, <strong>Sirui Xie*</strong>, Wenhuan Zhang*, Zhi Han, Yixin Zhu</p>
+                  <p class="publication-summary">Coarse visual guidance meets precise tactile feedback for manipulating previously unseen articulated objects without explicit kinematic models.</p>
+                  <div class="paper-links" aria-label="Vi-TacMan resources">
+                    <a href="https://arxiv.org/pdf/2510.06339" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-pdf"></use></svg>Paper</a>
+                    <a href="https://github.com/leiyaocui/Vi-TacMan" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-code"></use></svg>Code</a>
+                    <a href="https://vi-tacman.github.io/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-web"></use></svg>Project</a>
                   </div>
                 </div>
+              </article>
 
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Pytorch</h3>
-                    <span class="skills__number">80%</span>
-                  </div>
-                  <div class="skills__bar">
-                    <div class="skills__percentage skills__pytorch"></div>
+              <article class="publication-item">
+                <a class="publication-thumb contain" href="assets/images/bstar-teaser.webp" data-figure data-caption="B*: base placement across robot platforms and task requirements. Figure 1 from the authors’ paper; thumbnail shows the first two rows." data-source="https://arxiv.org/pdf/2504.12719" aria-label="Enlarge the B star figure">
+                  <img src="assets/images/bstar-thumb.webp" width="762" height="609" alt="KUKA and Franka robots illustrating feasible and infeasible base placements for linear and circular paths" loading="lazy" />
+                  <span class="image-hint" aria-hidden="true">View figure ↗</span>
+                </a>
+                <div class="publication-body">
+                  <p class="publication-venue">IEEE RA-L <span>2025</span></p>
+                  <h3><a href="https://bstar-planning.github.io/" target="_blank" rel="noopener noreferrer">B*: Efficient and Optimal Base Placement for Fixed-Base Manipulators</a></h3>
+                  <p class="publication-authors">Zihang Zhao*, Leiyao Cui*, <strong>Sirui Xie*</strong>, Saiyao Zhang, Zhi Han, Lecheng Ruan, Yixin Zhu</p>
+                  <p class="publication-summary">A hierarchical optimization framework jointly solves robot base placement and path planning, without precomputed kinematics databases.</p>
+                  <div class="paper-links" aria-label="B star resources">
+                    <a href="https://arxiv.org/pdf/2504.12719" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-pdf"></use></svg>Paper</a>
+                    <a href="https://github.com/leiyaocui/B_STAR" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-code"></use></svg>Code</a>
+                    <a href="https://bstar-planning.github.io/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-web"></use></svg>Project</a>
                   </div>
                 </div>
+              </article>
 
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">C++</h3>
-                    <span class="skills__number">70%</span>
-                  </div>
-                  <div class="skills__bar">
-                    <div class="skills__percentage skills__cpp"></div>
+              <article class="publication-item">
+                <a class="publication-thumb contain" href="assets/images/structured-nerf-teaser.webp" data-figure data-caption="Structured-NeRF: scene decomposition, rearrangement, shadows, semantics, and depth. Figure 1 from the ECCV 2024 paper, cropped from page 2." data-source="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/05154.pdf" aria-label="Enlarge the Structured NeRF figure">
+                  <img src="assets/images/structured-nerf-teaser.webp" width="1044" height="420" alt="An office scene decomposed and rearranged with shadow, semantic, and depth renderings" loading="lazy" />
+                  <span class="image-hint" aria-hidden="true">View figure ↗</span>
+                </a>
+                <div class="publication-body">
+                  <p class="publication-venue">ECCV <span>2024</span></p>
+                  <h3><a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/5154_ECCV_2024_paper.php" target="_blank" rel="noopener noreferrer">Structured-NeRF: Hierarchical Scene Graph with Neural Representation</a></h3>
+                  <p class="publication-authors">Zhide Zhong*, Jiakai Cao*, Songen Gu, <strong>Sirui Xie</strong>, Liyi Luo, Hao Zhao, Guyue Zhou, Haoang Li, Zike Yan</p>
+                  <p class="publication-summary">Hierarchical scene graphs organize neural radiance fields for controllable scene rearrangement with semantic and physical relationships.</p>
+                  <div class="paper-links" aria-label="Structured NeRF resources">
+                    <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/05154.pdf" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-pdf"></use></svg>Paper</a>
+                    <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/5154_ECCV_2024_paper.php" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-web"></use></svg>Proceedings</a>
                   </div>
                 </div>
-
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Linux</h3>
-                    <span class="skills__number">50%</span>
-                  </div>
-                  <div class="skills__bar">
-                    <div class="skills__percentage skills__linux"></div>
-                  </div>
-                </div>
-              </div>
+              </article>
             </div>
-            <!--==================== SKILLS 2 ====================-->
-            <!-- <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="uil uil-server-network skills__icon"></i>
+          </section>
 
-                <div>
-                  <h1 class="skills__title" i18n="skills__title2">
-                    Architecture
-                  </h1>
-                  <!---
-                  <span class="skills__subtitle" i18n="skills__years2"
-                    >More than * years</span
-                  >
-
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Urban Design</h3>
-                    <span class="skills__number">70%</span>
-                  </div>
-                  <div class="skills__bar">
-                    <div class="skills__percentage skills__urban"></div>
-                  </div>
-                </div>
-
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Architectural Design</h3>
-                    <span class="skills__number">50%</span>
-                  </div>
-                  <div class="skills__bar">
-                    <div class="skills__percentage skills__arc"></div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </section>
-
-      <!--==================== QUALIFICATION ====================-->
-      <section class="qualification section" id="qualification">
-        <h2 class="section__title" i18n="qualification__title">
-          Qualification
-        </h2>
-        <span class="section__subtitle" i18n="qualification__subtitle"
-          >My personal journey</span
-        >
-        <div class="qualification__container container">
-          <div class="qualification__tabs">
-            <div
-              class="qualification__button button--flex qualification__active"
-              data-target="#education"
-            >
-              <i class="uil uil-graduation-cap qualification__icon"></i>
-              <span i18n="education">Education</span>
+          <section id="experience" aria-labelledby="experience-title">
+            <h2 id="experience-title">Research experience</h2>
+            <div class="experience-list">
+              <article class="experience-item">
+                <div class="experience-header"><h3>MSEI Lab <span>Imperial College London</span></h3><time>Oct 2026 — Present</time></div>
+                <p class="experience-role">MRes Student · Advisor: <a href="https://profiles.imperial.ac.uk/d.zhang17" target="_blank" rel="noopener noreferrer">Dr. Dandan Zhang</a></p>
+                <p>Exploring active tactile perception of robot–object systems, alongside studies in reinforcement learning, research data analysis, and human neuromechanical control and learning.</p>
+              </article>
+              <article class="experience-item">
+                <div class="experience-header"><h3>CoRe Lab <span>Peking University</span></h3><time>Oct 2024 — Dec 2025</time></div>
+                <p class="experience-role">Research Intern · Advisor: <a href="https://yzhu.io/" target="_blank" rel="noopener noreferrer">Dr. Yixin Zhu</a></p>
+                <p>Developed algorithms for fixed manipulator base placement and investigated 6-DoF object pose estimation under heavy occlusion.</p>
+              </article>
+              <article class="experience-item">
+                <div class="experience-header"><h3>AIR &amp; Lightwheel AI <span>Tsinghua University / Industry</span></h3><time>May 2023 — Oct 2024</time></div>
+                <p class="experience-role">Research Intern · Advisor: <a href="https://sites.google.com/view/fromandto" target="_blank" rel="noopener noreferrer">Dr. Hao Zhao</a></p>
+                <p>Developed a Gaussian Splatting pipeline for 3D scene generation, contributed to NeRF-based simulation for autonomous driving, and led a team building a radar simulation module.</p>
+              </article>
+              <article class="experience-item">
+                <div class="experience-header"><h3>AI Design Lab <span>BUCEA</span></h3><time>Dec 2022 — Present</time></div>
+                <p class="experience-role">Research Assistant · Advisor: <a href="https://jzxy.bucea.edu.cn/xygk/szdw/146784.htm" target="_blank" rel="noopener noreferrer">Prof. Yuejia Xu</a></p>
+                <p>Facilitated weekly seminars on AI-assisted architectural workflows and collaborated on demonstrations of neural rendering and generative design.</p>
+              </article>
             </div>
+          </section>
 
-            <div class="qualification__button button--flex" data-target="#work">
-              <i class="uil uil-briefcase-alt qualification__icon"></i>
-              <span i18n="work">Work</span>
+          <section class="more-block" id="more" aria-labelledby="more-title">
+            <h2 id="more-title">Beyond the papers</h2>
+            <div class="split-grid">
+              <article class="info-card">
+                <h3>Selected awards</h3>
+                <ul class="award-list">
+                  <li><span class="year">2023</span><div><strong>First Prize</strong><br />Beijing Challenge Cup, Entrepreneurial Plan Competition</div></li>
+                  <li><span class="year">2022</span><div><strong>Silver Award</strong><br />Beijing Challenge Cup, Entrepreneurial Plan Competition</div></li>
+                  <li><span class="year">2022</span><div><strong>Second Class Scholarship</strong><br />Beijing University of Civil Engineering and Architecture</div></li>
+                  <li><span class="year">2022</span><div><strong>Third Prize</strong><br />Blue Bridge Cup Programming Competition, Beijing Division B</div></li>
+                </ul>
+              </article>
+              <article class="info-card">
+                <h3>Tools &amp; skills</h3>
+                <p class="skills-copy"><strong>Programming</strong><br />Python, PyTorch, C/C++; learning Rust.</p>
+                <p class="skills-copy"><strong>Research &amp; development</strong><br />Git, Linux, LaTeX, Markdown.</p>
+                <p class="skills-copy"><strong>3D design &amp; rendering</strong><br />Rhino, Blender, SketchUp, AutoCAD.</p>
+                <h3 class="outside-title">Outside the lab</h3>
+                <p class="skills-copy">I’ve been part of BUCEA’s student orchestra, and have worked on exhibition design, parametric design, and 3D printing.</p>
+              </article>
             </div>
-          </div>
-          <div class="qualification__sections">
-            <!--==================== QUALIFICATION CONTENT 1 ====================-->
-            <div
-              class="qualification__content qualification__active"
-              data-content
-              id="education"
-            >
-              <!--==================== QUALIFICATION 1 ====================-->
-              <div class="qualification__data">
-                <div>
-                  <h3 class="qualification__title" i18n="qualification1__title">
-                    Automotive Engineering
-                  </h3>
-                  <span
-                    class="qualification__subtitle"
-                    i18n="qualification1__subtitle"
-                    >BUCEA</span
-                  >
-                  <div class="qualification__calendar">
-                    <i class="uil uil-calendar-alt"></i>
-                    2021 - 2022
-                  </div>
-                </div>
-
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <span class="qualification__line"></span>
-                </div>
-              </div>
-              <!--==================== QUALIFICATION 2 ====================-->
-              <div class="qualification__data">
-                <div></div>
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <span class="qualification__line"></span>
-                </div>
-
-                <div>
-                  <h3 class="qualification__title" i18n="qualification2__title">
-                    Urban Design
-                  </h3>
-                  <span
-                    class="qualification__subtitle"
-                    i18n="qualification2__subtitle"
-                    >BUCEA</span
-                  >
-                  <div class="qualification__calendar">
-                    <i class="uil uil-calendar-alt"></i>
-                    2022.12 - ...
-                  </div>
-                </div>
-              </div>
-              <!--==================== QUALIFICATION 3 ====================-->
-              <div class="qualification__data">
-                <div>
-                  <h3 class="qualification__title" i18n="qualification3__title">
-                    Artificial Intelligence
-                  </h3>
-                  <span
-                    class="qualification__subtitle"
-                    i18n="qualification3__subtitle"
-                    >Self-Study</span
-                  >
-                  <div class="qualification__calendar">
-                    <i class="uil uil-calendar-alt"></i>
-                    2023.2 - 2026.7
-                  </div>
-                </div>
-
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <!-- <span class="qualification__line"></span> -->
-                </div>
-              </div>
-            </div>
-            <!--==================== QUALIFICATION CONTENT 2 ====================-->
-            <div class="qualification__content" data-content id="work">
-              <!--==================== QUALIFICATION 1 ====================-->
-              <div class="qualification__data">
-                <div></div>
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <span class="qualification__line"></span>
-                </div>
-                <div>
-                  <h3 class="qualification__title" i18n="qualification4__title">
-                    Computer Vision / AIGC
-                  </h3>
-                  <span
-                    class="qualification__subtitle"
-                    i18n="qualification4__subtitle"
-                    >AIR, Tsinghua University</span
-                  >
-                  <div class="qualification__calendar">
-                    <i class="uil uil-calendar-alt"></i>
-                    2023.5 - 2024.10
-                  </div>
-                </div>
-              </div>
-
-              <!--==================== QUALIFICATION 2 ====================-->
-              <div class="qualification__data">
-                <div>
-                  <h3 class="qualification__title" i18n="qualification4__title">
-                    Embodied AI
-                  </h3>
-                  <span
-                    class="qualification__subtitle"
-                    i18n="qualification4__subtitle"
-                    >CoRe, Peking University</span
-                  >
-                  <div class="qualification__calendar">
-                    <i class="uil uil-calendar-alt"></i>
-                    2024.10 - 2025.11
-                  </div>
-                </div>
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <!-- <span class="qualification__line"></span> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-      <!--==================== Publications =================-->
-
-      <section class="Publications section" id="publications">
-        <h2 class="section__title" i18n="about__title">Publications</h2>
-        <h3 class="paper_type">Conference Papers</h3>
-        <div class="paper__container">
-          <div class="paper">
-          <div class="paper__head">
-            <b>Vi-TacMan</b>: Articulated Object ManipulationviaVision and Touch. [ICRA 2026]
-          </div>
-          <div class="authors">
-            Leiyao Cui*, Zihang Zhao*, <b>SiruiXie*</b>, Wenhuan Zhang*, Zhi Han, Yixin Zhu
-          </div>
-          <br>
-          <div class="paper__head">
-            <b>Structured-NeRF</b>: Hierarchical Scene Graph with Neural Representation[ECCV 2024]
-          </div>
-          <div class="authors">
-            Zhide Zhong*, Jiakai Cao, Singen Gu, <b>Sirui Xie</b>, Liyi Luo, Hao Zhao, Guyue Zhou, Zike Yan
-          </div>
-          <br>
-          <!-- <div class="paper__head">
-            <b>StreetDreamer</b>: High-Fidelity and Diverse Street Scene Generation[Submitted_to_ICRA2025]
-          </div>
-          <div class="authors">
-            <b>Sirui Xie *</b>, Huan-ang Gao, Dingwei Tan, Junyuan Ma, Mingju Gao, Weihao Gu, Yuejia Xu, Jingwei Zhao, Kangliang Chen, Xiang He, Hao Zhao
-          </div> -->
-          </div>
-        </div>
-      <h3 class="paper_type">Journal Paper</h3>
-      <div class="paper__container">
-        <div class="paper">
-          <div class="paper__head">
-            <b>B*</b>: Efficient and Optimal Base Placement for Fixed-Base Manipulators[RA-L]
-          </div>
-          <div class="authors">
-            Zihang Zhao*, Leiyao Cui*, <b>Sirui Xie*</b>, Saiyao Zhang, Zhi Han, Lecheng Ruan, Yixin Zhu
-          </div>
-        </div>
+          </section>
+          <footer class="page-footer"><span>© 2026 Sirui Xie</span><a href="#top">Back to top ↑</a></footer>
+        </main>
       </div>
-      </section>
-
-
-      <!--==================== PORTFOLIO ====================-->
-
-      <!--
-      <section class="portfolio section" id="portfolio">
-        <h2 class="section__title" i18n="portfolio__title">Portfolio</h2>
-        <span class="section__subtitle" i18n="portfolio__subtitle"
-          >Most recent works</span
-        >
-
-        <div class="portfolio__container container swiper-container">
-          <div class="swiper-wrapper">
-            --==================== PORTFOLIO 1 ====================--
-
-            <div class="portfolio__content grid swiper-slide">
-              <img
-                src="assets/img/portfolio1.jpg"
-                alt=""
-                class="portfolio__img"
-              />
-
-              <div class="portfolio_">
-                <h3 class="portfolio__title" i18n="portfolio1__title">
-                  Modern Website
-                </h3>
-                <p
-                  class="portfolio__description"
-                  i18n="portfolio1__description"
-                >
-                  Website adaptable to all devices, with ui components and
-                  animated interactions.
-                </p>
-                <a
-                  href="https://gitee.com/asoutherncat/"
-                  target="_blank"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  Demo
-                  <i class="uil uil-arrow-right button__icon"></i>
-                </a>
-              </div>
-            </div>
-
-            --==================== PORTFOLIO 2 ====================--
-
-            <div class="portfolio__content grid swiper-slide">
-              <img
-                src="assets/img/portfolio2.jpg"
-                alt=""
-                class="portfolio__img"
-              />
-
-              <div class="portfolio_">
-                <h3 class="portfolio__title" i18n="portfolio2__title">
-                  Modern Website
-                </h3>
-                <p
-                  class="portfolio__description"
-                  i18n="portfolio2__description"
-                >
-                  Website adaptable to all devices, with ui components and
-                  animated interactions.
-                </p>
-                <a
-                  href="https://gitee.com/asoutherncat/"
-                  target="_blank"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  Demo
-                  <i class="uil uil-arrow-right button__icon"></i>
-                </a>
-              </div>
-            </div>
-
-            --==================== PORTFOLIO 3 ====================--
-
-            <div class="portfolio__content grid swiper-slide">
-              <img
-                src="assets/img/portfolio3.jpg"
-                alt=""
-                class="portfolio__img"
-              />
-
-              <div class="portfolio_">
-                <h3 class="portfolio__title" i18n="portfolio3__title">
-                  Modern Website
-                </h3>
-                <p
-                  class="portfolio__description"
-                  i18n="portfolio3__description"
-                >
-                  Website adaptable to all devices, with ui components and
-                  animated interactions.
-                </p>
-                <a
-                  href="https://gitee.com/asoutherncat/"
-                  target="_blank"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  Demo
-                  <i class="uil uil-arrow-right button__icon"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          -- add arrows--
-          <div class="swiper-button-next">
-            <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-          </div>
-
-          <div class="swiper-button-prev">
-            <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-          </div>
-
-          -- Add Pagination --
-          <div class="swiper-pagination"></div>
-        </div>
-      </section>
-    -->
-
-      <!--==================== CONTACT ME ====================-->
-      <section class="contact section" id="contact">
-        <h2 class="section__title" i18n="contact__title">Contact me</h2>
-        <span class="section__subtitle" i18n="contact__subtitle"
-          >Get in touch</span
-        >
-
-        <div class="contact__container container grid">
-          <div>
-            <div class="contact__information">
-              <i class="uil uil-phone-alt contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title" i18n="tel">Call me</h3>
-                <span class="contact__subtitle" i18n="tel__number"
-                  >+86 199-8367-9194</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-envelope contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title" i18n="email">E-mail</h3>
-                <span class="contatc__subtitle" i18n="email__address"
-                  >sirius200208@outlook.com</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-map-marker contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title" i18n="location">Location</h3>
-                <span class="contatc__subtitle" i18n="location__detail"
-                  >Beijing , CHN</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!--==================== FOOTER ====================-->
-    <footer class="footer">
-      <div class="footer__bg">
-        <div class="footer__container container grid">
-          <div>
-            <h1 class="footer__title">Sirui Xie</h1>
-            <span class="footer__subtitle" i18n="home__subtitle"
-              >Computer Vision/Robotics</span
-            >
-          </div>
-
-          <ul class="footer__links">
-            <li>
-              <a href="#skills" class="footer__link" i18n="skills">Skills</a>
-            </li>
-            <li>
-              <a href="#publications" class="footer__link" i18n="portfolio"
-                >Publications</a
-              >
-            </li>
-            <li>
-              <a href="#contact" class="footer__link" i18n="contact">Contact</a>
-            </li>
-          </ul>
-
-          <div class="footer__socials">
-            <a href="https://www.linkedin.com/in/SiruiXie" target="_blank">
-              <i class="uil uil-linkedin-alt footer__social"></i>
-            </a>
-            <a href="https://github.com/SiruiXie" target="_blank">
-              <svg class="icon footer__social" aria-hidden="true">
-                <use xlink:href="#icon-github"></use>
-              </svg>
-            </a>
-            <a href="https://www.zhihu.com/people/sirius-44-23-40" target="_blank">
-              <span class="footer__social social-icon social-icon--zhihu" aria-hidden="true"></span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </footer>
-
-    <!--==================== SCROLL TOP ====================-->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup__icon"></i>
-    </a>
-    <!--==================== SWIPER JS ====================-->
-    <script src="assets/js/swiper-bundle.min.js"></script>
-
-    <!-- iconfont JS -->
-    <script src="assets/js/iconfont.js"></script>
-    <!-- jquery -->
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="assets/js/jquery.i18n.min.js"></script>
-    <!--==================== MAIN JS ====================-->
-    <script src="assets/js/main.js"></script>
-
-    <!-- translate JS -->
-    <!--
-    <script src="assets/js/cn-en-translate.js"></script>
-    -->
+    </div>
+    <dialog class="figure-dialog" aria-labelledby="figure-caption">
+      <button class="dialog-close" type="button" aria-label="Close figure">Close <span aria-hidden="true">×</span></button>
+      <img class="dialog-image" alt="" />
+      <p id="figure-caption"></p>
+      <a class="figure-source" target="_blank" rel="noopener noreferrer">View original source ↗</a>
+    </dialog>
   </body>
 </html>
